@@ -1,0 +1,30 @@
+EXAMPLE 1:
+update driver_stats set d_starts = 208 where d_id =3;
+drop table new_record;
+create table new_record as 
+(select DS.*,D.d_name,D.D_country,D.c_id from driver_stats as DS,
+ drivers as D where DS.d_id = D.d_id);
+commit;
+
+
+DRIVERS:
+drop table new_record;
+create table new_record as 
+(select DS.*,D.d_name,D.D_country,D.c_id from driver_stats as DS,
+ drivers as D where DS.d_id = D.d_id);
+
+CONSTRUCTORS:
+drop table new_constructor;
+create table new_constructor as 
+(select C.c_name,C.engine_id,C.tp_eid,CS.* from constructors as C, 
+constructor_stats as CS where C.c_id = CS.c_id);
+
+WDC:
+drop table new_wdc;
+create table new_wdc as (select D.d_id,D.d_name,wdc.year from drivers as D, 
+wdc where D.d_id = wdc.d_id);
+
+WCC:
+drop table new_wcc;
+create table new_wcc as (select C.c_id,C.c_name,wcc.year from constructors as C, 
+wcc where C.c_id = wcc.c_id);

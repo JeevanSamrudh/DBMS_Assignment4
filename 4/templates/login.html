@@ -1,0 +1,38 @@
+<head>
+        <style>
+            .title{ text-align: center; color:blue;}
+            div.user{color: red; font-size: large;}
+            div.users{color: black;}
+        </style>
+</head>
+<body>
+<h1 class="title" >Formula 1 Database Management System</h1>
+<h3>Login Page</h3>
+<form method="POST" action="" onsubmit="return check_pass()">
+    <div class="user">User:
+    <div id="users" class="users">
+        <input type="radio" id="r1" name="user" value="Public"> Public
+        <input type="radio" id="r2" name="user" value="FIA"> FIA
+    </div>
+    </div>
+    Password: <input type="password" id="password" name="password" value=""><br>
+    <input type="submit">
+    <p id="reenter"></p>
+</form>
+</body>
+<script>
+    function check_pass(){
+        if(document.getElementById("r1").checked == true && document.getElementById("password").value == "Public")
+            return true;
+        else if(document.getElementById("r2").checked == true && document.getElementById("password").value == "FIA")
+            return true;
+        else {
+            document.getElementById("reenter").style.color = "red";
+            document.getElementById("reenter").innerHTML = "Re-enter correct password";
+            return false;
+        }
+    }
+</script>
+
+        
+
